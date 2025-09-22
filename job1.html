@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>爱宠每一刻</title>
+<style>
+  body {
+    font-family: "Microsoft YaHei", Arial, sans-serif;
+    background-color: #FFF9E6; /* 淡黄色背景 */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* 顶部栏 - 保留粉色背景 */
+  .topbar {
+    font-size: 12px;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 20px;
+    color: black;
+    background-color: pink; /* 保留淡粉色 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* 导航栏 - 浅灰色背景，居中显示 */
+  nav {
+    background-color: #f0f0f0; /* 浅灰色背景 */
+    padding: 15px 0;
+    text-align: center;
+  }
+  nav a {
+    color: black;
+    text-decoration: none;
+    margin: 0 18px; /* 调整文字间距 */
+    font-size: 16px; /* 调整文字大小 */
+    font-weight: 600;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  /* 标语 - 间距更近，左上+右下布局，字体为幼圆 */
+  .slogan-container {
+    width: 100%;
+    height: 120px; /* 容器高度保持120px，上下句距离适中 */
+    position: relative;
+    margin: 20px 0; /* 容器上下外距 */
+  }
+  .main-slogan {
+    font-family: "幼圆", YouYuan, sans-serif; /* 幼圆字体 */
+    font-size: 48px;
+    font-weight: bold;
+    margin: 0;
+    position: absolute;
+  }
+  .slogan-top-left {
+    top: 10px; /* 顶部标语向下偏移10px */
+    left: 30px; /* 左侧位置 */
+  }
+  .slogan-bottom-right {
+    bottom: 10px; /* 底部标语向上偏移10px */
+    right: 30px; /* 右侧位置 */
+  }
+  
+  /* 认证区域 - 保留浅蓝色背景 */
+  .certification-section {
+    background-color: #e6f2ff; /* 保留淡蓝色背景 */
+    padding: 30px 20px;
+    margin-bottom: 40px;
+  }
+  .section-title {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .certifications {
+    display: flex;
+    justify-content: center; /* 整体居中 */
+    gap: 25px; /* 调整认证框间距 */
+    flex-wrap: wrap;
+  }
+  .cert-box {
+    border: 2px solid #000; /* 黑色边框 */
+    width: 160px; /* 认证框大小 */
+    height: 90px; /* 认证框大小 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    text-align: center;
+    color: black;
+    padding: 10px;
+    background: linear-gradient(135deg, #fff3cd 0%, #ff6b6b 100%); /* 金红色渐变背景 */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2); /* 黑色阴影增强质感 */
+  }
+
+  /* 产品分类部分 */
+  .categories {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 40px 20px;
+  }
+  .category {
+    text-align: center;
+  }
+  .category h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  .product-item {
+    display: flex;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 280px;
+    background-color: white; /* 产品项白色背景，与淡黄色形成对比 */
+  }
+  .product-name {
+    font-weight: bold;
+    width: 30%;
+    text-align: left;
+    padding-right: 10px;
+    border-right: 1px solid #ccc;
+  }
+  .product-feature {
+    width: 70%;
+    text-align: left;
+    padding-left: 10px;
+  }
+  .more-items {
+    margin-top: 15px;
+    font-size: 16px;
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  /* 特色优势部分 */
+  .advantages {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    margin: 0 20px 50px;
+    flex-wrap: wrap;
+  }
+  .balloon {
+    width: 110px;
+    height: 130px;
+    background: white; /* 气球白色背景 */
+    border: 2px solid #666;
+    border-radius: 60% 60% 70% 70%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .balloon::before {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    margin-left: -1px;
+    width: 2px;
+    height: 20px;
+    background: #666;
+  }
+  .balloon::after {
+    content: "";
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #666;
+  }
+
+  /* 页脚部分 */
+  .footer {
+    border-top: 1px solid #ccc;
+    padding: 15px 20px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+    background-color: #f9f9f9;
+    margin-top: 30px;
+  }
+  .footer .left {
+    font-weight: bold;
+  }
+  .footer .right {
+    font-weight: normal;
+  }
+</style>
+</head>
+<body>
+  <!-- 顶部栏 - 保留粉色不变 -->
+  <div class="topbar">
+    <div class="left">山东省济南市xx区xx 6-111-22122-3333</div>
+    <div class="center">@mcshii @123.com</div>
+    <div class="right">工作时间 9:00 - 17:00 工作日</div>
+  </div>
+  
+  <!-- 导航栏 -->
+  <nav>
+    <a href="#">网站首页</a>
+    <a href="#">关于我们</a>
+    <a href="#">产品介绍</a>
+    <a href="#">特色优势</a>
+    <a href="#">加入我们</a>
+    <a href="#">帮助</a>
+  </nav>
+  
+  <!-- 标语 - 间距更近，左上+右下布局 -->
+  <div class="slogan-container">
+    <h1 class="main-slogan slogan-top-left">爱宠每一刻</h1>
+    <h1 class="main-slogan slogan-bottom-right">好物伴成长</h1>
+  </div>
+  
+  <!-- 认证区域 - 保留浅蓝色背景，认证框改为金红色黑边 -->
+  <div class="certification-section">
+    <div class="section-title">权威认证</div>
+    <div class="certifications">
+      <div class="cert-box">GB/T 43839-2014标准</div>
+      <div class="cert-box">CNAS认证</div>
+      <div class="cert-box">CMA认证</div>
+    </div>
+  </div>
+
+  <!-- 产品分类部分 -->
+  <div class="section">
+    <div class="section-title">产品分类</div>
+    <div class="categories">
+      <div class="category">
+        <h3>饮食类</h3>
+        <div class="product-item">
+          <div class="product-name">宠物食盆</div>
+          <div class="product-feature">环保PP材质 防滑防打翻 易清洁</div>
+        </div>
+        <div class="product-item">
+          <div class="product-name">自动喂食器</div>
+          <div class="product-feature">智能定时定量 远程操控</div>
+        </div>
+        <div class="more-items">...</div>
+      </div>
+      <div class="category">
+        <h3>清洁类</h3>
+        <div class="product-item">
+          <div class="product-name">猫砂</div>
+          <div class="product-feature">快速结团 低尘除臭 天然成分</div>
+        </div>
+        <div class="product-item">
+          <div class="product-name">宠物沐浴露</div>
+          <div class="product-feature">天然植物萃取 多种肤质适用</div>
+        </div>
+        <div class="more-items">...</div>
+      </div>
+      <div class="category">
+        <h3>出行类</h3>
+        <div class="product-item">
+          <div class="product-name">牵引绳</div>
+          <div class="product-feature">高强尼龙材质 结实耐用 反光设计安全</div>
+        </div>
+        <div class="product-item">
+          <div class="product-name">宠物航空箱</div>
+          <div class="product-feature">符合标准 通风良好 坚固安全</div>
+        </div>
+        <div class="more-items">...</div>
+      </div>
+      <div class="category">
+        <h3>玩具类</h3>
+        <div class="product-item">
+          <div class="product-name">毛绒玩具</div>
+          <div class="product-feature">安全可靠 内置发声 造型可爱</div>
+        </div>
+        <div class="product-item">
+          <div class="product-name">皮球</div>
+          <div class="product-feature">坚实耐咬 快乐陪伴</div>
+        </div>
+        <div class="more-items">...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 特色优势部分 -->
+  <div class="section">
+    <div class="section-title">特色优势</div>
+    <div class="advantages">
+      <div class="balloon">从线设计</div>
+      <div class="balloon">品质保障</div>
+      <div class="balloon">环保可持续</div>
+      <div class="balloon">高性价比</div>
+      <div class="balloon">档次品牌</div>
+    </div>
+  </div>
+
+  <!-- 页脚部分 -->
+  <div class="footer">
+    <div class="left">友情链接 宠物医院</div>
+    <div class="right">权威媒体 服装品牌 洗护</div>
+  </div>
+</body>
+</html>
+    
